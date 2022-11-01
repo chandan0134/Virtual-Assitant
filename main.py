@@ -17,7 +17,8 @@ def take_command():
         with sr.Microphone() as source:
             print('listening...')
             voice = listener.listen(source)
-            command = listener.recognize_google(voice)
+            command = listener.recognize_google(voice,language='en-in')
+            command = command.lower()
             if 'johnny' in command:
                 command = command.replace('johnny', '')
                 print(command)
@@ -35,7 +36,8 @@ def run_johnny():
     elif 'joke' in command:
         talk(pyjokes.get_joke())
     
-
+while True:
+    run_johnny()
 
 
 
